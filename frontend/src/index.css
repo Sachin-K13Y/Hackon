@@ -1,0 +1,156 @@
+/* Google Fonts — must be at top, outside @layer */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --amazon-yellow: #FFD814;
+    --amazon-orange: #FF9900;
+    --amazon-dark: #131921;
+    --amazon-blue: #232F3E;
+    --teal: #008296;
+    --amazon-light: #EAEDED;
+    --amazon-red: #B12704;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    /* Deep Amazon-branded gradient behind the mobile frame */
+    background: linear-gradient(135deg, #0a0e14 0%, #131921 40%, #1a2332 70%, #0d1117 100%);
+    min-height: 100dvh;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100dvh;
+    overscroll-behavior: none;
+  }
+
+  /* Lock to mobile width — glowing phone frame on desktop */
+  #root {
+    max-width: 430px;
+    min-height: 100dvh;
+    margin: 0 auto;
+    background: #ffffff;
+    position: relative;
+    overflow-x: hidden;
+    box-shadow:
+      0 0 0 1px rgba(255, 153, 0, 0.15),
+      0 0 60px rgba(255, 153, 0, 0.08),
+      0 20px 80px rgba(0, 0, 0, 0.6),
+      0 0 120px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Scrollbar hiding */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@layer utilities {
+  .amazon-yellow { background-color: var(--amazon-yellow); }
+  .amazon-orange { background-color: var(--amazon-orange); }
+  .amazon-dark { background-color: var(--amazon-dark); }
+  .amazon-blue-bg { background-color: var(--amazon-blue); }
+  .teal-bg { background-color: var(--teal); }
+
+  .text-amazon-orange { color: var(--amazon-orange); }
+  .text-teal { color: var(--teal); }
+  .text-amazon-yellow { color: var(--amazon-yellow); }
+  .text-amazon-dark { color: var(--amazon-dark); }
+
+  .btn-yellow {
+    background: linear-gradient(to bottom, #f0c14b, #FFD814);
+    border: 1px solid #a88734;
+    color: #111;
+    font-weight: 600;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-yellow:hover { background: linear-gradient(to bottom, #FFD814, #f0c14b); }
+  .btn-yellow:active { transform: scale(0.97); }
+
+  .add-btn {
+    background: linear-gradient(to bottom, #f0c14b, #FFD814);
+    border: 1px solid #a88734;
+    color: #111;
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 9999px;
+    padding: 5px 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .qty-control {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(to bottom, #f0c14b, #FFD814);
+    border: 1px solid #a88734;
+    border-radius: 9999px;
+    padding: 4px 8px;
+  }
+
+  .deal-great { background: #28a745; color: white; }
+  .deal-good { background: #17a2b8; color: white; }
+  .deal-avg { background: #6c757d; color: white; }
+
+  .steal-deal-badge {
+    background: var(--teal);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .discount-pill {
+    background: var(--amazon-orange);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 9999px;
+  }
+
+  .delivery-badge {
+    background: var(--amazon-yellow);
+    color: #111;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .card-shadow {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .page-content {
+    padding-bottom: 80px;
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+}
