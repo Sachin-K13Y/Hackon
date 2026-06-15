@@ -1,10 +1,10 @@
-# Amazon Now — Grocery in 9 Mins 🛒⚡
+# Amazon Now — Grocery in 9 Mins
 
 A quick-commerce mobile web app that allows users to order groceries delivered in under 10 minutes. Built for **Amazon HackOn** with a fully AWS-native infrastructure.
 
 ---
 
-## 🏗️ AWS Infrastructure
+## AWS Infrastructure
 
 | Service | Purpose |
 |---|---|
@@ -15,7 +15,7 @@ A quick-commerce mobile web app that allows users to order groceries delivered i
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 - **AI Smart Search** — Natural language search powered by Groq (Llama 3.1). Ask "low-fat breakfast options" and get relevant products instantly.
 - **AI Meal Planner / Cart Builder** — Type "I want to make Biryani" and the AI auto-populates your cart with rice, spices, curd, and everything else.
@@ -29,8 +29,33 @@ A quick-commerce mobile web app that allows users to order groceries delivered i
 - **Global Cart State** — Cart persists across all pages via Zustand.
 
 ---
-
-## 🛠️ Tech Stack
+##  Project Structure
+The project follows a modern, scalable architecture, cleanly separating the client and server concerns. The backend implements a robust layered architecture (Controllers → Services → Repositories → Models) to ensure maintainability, while the frontend uses a feature-based structure for maximum reusability.
+```
+├── backend/
+│   ├── src/
+│   │   ├── index.ts          # Express + Socket.io server
+│   │   ├── models/           # Mongoose schemas (Product, Order)
+│   │   ├── routes/           # REST API routes (products, orders, ai)
+│   │   └── services/
+│   │       ├── claude.ts     # AI engine (Groq — active)
+│   │       └── claude.bedrock.ts  # AWS Bedrock version (ready to swap)
+│   ├── scripts/
+│   │   ├── seed.ts           # Database seeder
+│   │   └── upload-images-to-s3.ts  # S3 image uploader
+│   ├── Dockerfile            # Production Docker image
+│   └── .env.example          # Environment variable template
+│
+└── frontend/
+    ├── src/
+    │   ├── components/       # ProductImage (CDN-aware), Header, Cart, etc.
+    │   ├── pages/            # Home, ProductDetail, Cart, Checkout, etc.
+    │   ├── store/            # Zustand cart store
+    │   └── api/              # Axios API client
+    ├── public/               # Static assets (logo, favicon)
+    └── .env.production.example  # Production env template
+```
+##  Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -44,7 +69,7 @@ A quick-commerce mobile web app that allows users to order groceries delivered i
 
 ---
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - Node.js 20+
 - MongoDB Atlas URI (or local MongoDB)
@@ -53,7 +78,7 @@ A quick-commerce mobile web app that allows users to order groceries delivered i
 
 ---
 
-## ⚙️ 1. Environment Setup
+##  1. Environment Setup
 
 ### Backend
 ```bash
@@ -92,7 +117,7 @@ VITE_CDN_URL=https://xxxx.cloudfront.net
 
 ---
 
-## 📦 2. Install Dependencies
+##  2. Install Dependencies
 
 ```bash
 # Backend
@@ -104,7 +129,7 @@ cd ../frontend && npm install
 
 ---
 
-## 🌱 3. Seed the Database
+##  3. Seed the Database
 
 Populate MongoDB with 380+ products:
 ```bash
@@ -114,7 +139,7 @@ npm run seed
 
 ---
 
-## 🚀 4. Start Development Servers
+##  4. Start Development Servers
 
 Run backend and frontend in **two separate terminals**:
 
@@ -132,11 +157,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-> 📱 This is a **mobile-first** app. Open Chrome DevTools → Toggle Device Toolbar → Select **iPhone 12/13/14 Pro** for the best experience.
+>  This is a **mobile-first** app. Open Chrome DevTools → Toggle Device Toolbar → Select **iPhone 12/13/14 Pro** for the best experience.
 
 ---
 
-## 🖼️ 5. Product Images (AWS S3 + CloudFront)
+##  5. Product Images (AWS S3 + CloudFront)
 
 Product images are stored in S3 and served via CloudFront CDN. They are **not committed to this repository** to keep the repo lean.
 
@@ -148,29 +173,4 @@ S3_BUCKET=your-bucket-name CLOUDFRONT_URL=https://xxxx.cloudfront.net npm run up
 
 ---
 
-## 📁 Project Structure
 
-```
-├── backend/
-│   ├── src/
-│   │   ├── index.ts          # Express + Socket.io server
-│   │   ├── models/           # Mongoose schemas (Product, Order)
-│   │   ├── routes/           # REST API routes (products, orders, ai)
-│   │   └── services/
-│   │       ├── claude.ts     # AI engine (Groq — active)
-│   │       └── claude.bedrock.ts  # AWS Bedrock version (ready to swap)
-│   ├── scripts/
-│   │   ├── seed.ts           # Database seeder
-│   │   └── upload-images-to-s3.ts  # S3 image uploader
-│   ├── Dockerfile            # Production Docker image
-│   └── .env.example          # Environment variable template
-│
-└── frontend/
-    ├── src/
-    │   ├── components/       # ProductImage (CDN-aware), Header, Cart, etc.
-    │   ├── pages/            # Home, ProductDetail, Cart, Checkout, etc.
-    │   ├── store/            # Zustand cart store
-    │   └── api/              # Axios API client
-    ├── public/               # Static assets (logo, favicon)
-    └── .env.production.example  # Production env template
-```
