@@ -35,8 +35,8 @@ npm-debug.log*
 generate_mapping.js
 generate_mapping.ts
 grocery_recommendation_prompt.md
-package-lock.json
-package.json
+/package-lock.json
+/package.json
 
 # ── Binary / non-source files inside public/images that aren't product images ─
 frontend/public/images/products/*.docx
@@ -53,7 +53,7 @@ backend/scripts/check_images.js
 backend/scripts/image_mapping.md
 
 # ── Lock file at root (not needed, frontend/backend have their own) ───────────
-package-lock.json
+/package-lock.json
 
 # ── Misc ──────────────────────────────────────────────────────────────────────
 *.local
